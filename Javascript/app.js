@@ -30,18 +30,7 @@
         this.fact = fact;
         this.image = image;
     };
-/*
-// Create Dino Constructor
-    function Dino (species, weight, height, diet, where, when, fact){
-        this.species=species;
-        this.weight=weight;
-        this.height=height;
-        this.diet=diet;
-        this.where=where;
-        this.when=when;
-        this.fact=fact
-    };
- */   
+ 
     // Create Dino Objects
     const dino1 = new Dino(
         "Triceratops",
@@ -122,31 +111,30 @@ console.log(dino5);
 
 const human = new Human();
 
-
-    // Use IIFE to get human data from form
-const button = document.getElementById("btn");
+    // Add eventlisteners
+const button = document.getElementById('btn');
 document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', userData)
 });
 
+    // Use IIFE to get human data from form 
+
 const userData = () => {
-    (function(human) {
+    (function() {
         human.species = document.getElementById('name').value;
         human.diet = document.getElementById('diet').value;
         human.weight = document.getElementById('weight').value;
         human.height = document.getElementById('height').value;
         human.when = document.getElementById('year').value;
-        human.fact = "";
-        human.image = 
+        human.fact = '';
+        human.image = '';
     }());
 };
-
-//Create a dino array and select a random one to compare with human
 
 
 console.log(typeof human)
 
-
+console.log(dino1.methodWeight());
 
 //Dino method 1 (weight)
 
@@ -184,6 +172,8 @@ Dino.prototype.methodHeight = function() {
 
 
     // Generate Tiles for each Dino in Array
+
+
   
         // Add tiles to DOM
 
