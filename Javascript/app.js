@@ -10,25 +10,25 @@
 
     function Dino (species, weight, height, diet, where, when, fact, image) {
         Animal.call(this, species, weight, height, diet, image)
-            this.species = species;
-            this.weight = weight;
-            this.height = height;
-            this.diet = diet;
-            this.where = where;
-            this.when = when;
-            this.fact = fact;
-            this.image = image;
+        this.species = species;
+        this.weight = weight;
+        this.height = height;
+        this.diet = diet;
+        this.where = where;
+        this.when = when;
+        this.fact = fact;
+        this.image = image;
     };
 
     function Human(species, weight, height, diet, when, fact, image) {
         Animal.call(this, weight, height, diet, image)
-            this.species = species;
-            this.weight = weight;
-            this.height = height;
-            this.diet = diet;
-            this.when = when;
-            this.fact = fact;
-            this.image = image;
+        this.species = species;
+        this.weight = weight;
+        this.height = height;
+        this.diet = diet;
+        this.when = when;
+        this.fact = fact;
+        this.image = image;
     };
 /*
 // Create Dino Constructor
@@ -137,6 +137,7 @@ const userData = () => {
         human.height = document.getElementById('height').value;
         human.when = document.getElementById('year').value;
         human.fact = "";
+        human.image = 
     }());
 };
 
@@ -147,17 +148,39 @@ console.log(typeof human)
 
 
 
-    // Create Dino Compare Method 1
-    // NOTE: Weight in JSON file is in lbs, height in inches. 
+//Dino method 1 (weight)
 
-    
+  Dino.prototype.methodWeight = function() {
+    if (this.weight > human.weight){
+        return `${this.species} is ${this.weight - human.weight}kg. heavier than you!`
+    } else if (this.weight == human.weight){
+        return `${this.species} and you have the same weight!`
+    } else {
+        return `You are ${human.weight - this.weight}kg. heavier than a ${this.species}.`
+    }
+  };
 
-    // Create Dino Compare Method 2
-    // NOTE: Weight in JSON file is in lbs, height in inches.
+//Dino method 2 (height)
 
-    
-    // Create Dino Compare Method 3
-    // NOTE: Weight in JSON file is in lbs, height in inches.
+Dino.prototype.methodHeight = function() {
+    if (this.height > human.height){
+        return `${this.species} is ${this.height - human.height}cm. taller than you!`
+    } else if (this.height == human.height){
+        return `${this.species} and you have the same height!`
+    } else {
+        return `You are ${human.height - this.height}kg. taller than a ${this.species}.`
+    }
+  };
+
+//Dino method 3 (diet)
+  
+  Dino.prototype.methodDiet = function() {
+    if (this.diet === human.diet) {
+      return `You and a ${this.species} eat pretty much the same things. Probably you cook better than them!`;
+    } else {
+      return `Welp. You two are quite different when it comes to diet.`;
+    }
+  };
 
 
     // Generate Tiles for each Dino in Array
