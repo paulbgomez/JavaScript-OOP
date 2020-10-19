@@ -1,2 +1,0 @@
-# JavaScript-OOP
-Dino
