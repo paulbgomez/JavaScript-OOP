@@ -10,25 +10,15 @@
 
     function Dino (species, weight, height, diet, where, when, fact, image) {
         Animal.call(this, species, weight, height, diet, image)
-        this.species = species;
-        this.weight = weight;
-        this.height = height;
-        this.diet = diet;
         this.where = where;
         this.when = when;
         this.fact = fact;
-        this.image = image;
     };
 
     function Human(species, weight, height, diet, when, fact, image) {
         Animal.call(this, weight, height, diet, image)
-        this.species = species;
-        this.weight = weight;
-        this.height = height;
-        this.diet = diet;
         this.when = when;
         this.fact = fact;
-        this.image = image;
     };
  
     // Create Dino Objects
@@ -107,9 +97,6 @@
     
 console.log(dino5);
 
-    // Create Human Object
-
-const human = new Human();
 
     // Add eventlisteners
 const button = document.getElementById('btn');
@@ -117,24 +104,26 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', userData)
 });
 
+    // Create Human Object
+
+    let human = new Human;
+
     // Use IIFE to get human data from form 
 
 const userData = () => {
-    (function() {
-        human.species = document.getElementById('name').value;
-        human.diet = document.getElementById('diet').value;
-        human.weight = document.getElementById('weight').value;
-        human.height = document.getElementById('height').value;
-        human.when = document.getElementById('year').value;
-        human.fact = '';
-        human.image = '';
-    }());
+    human.species = document.getElementById('name').value;
+    human.diet = document.getElementById('diet').value;
+    human.weight = document.getElementById('weight').value;
+    human.height = document.getElementById('height').value;
+    human.when = document.getElementById('year').value;
+    human.fact = '';
+    human.image = '';
 };
 
 
 console.log(typeof human)
+console.log(userData())
 
-console.log(dino1.methodWeight());
 
 //Dino method 1 (weight)
 
