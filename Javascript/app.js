@@ -97,20 +97,13 @@
     
 console.log(dino5);
 
-
-    // Add eventlisteners
-const button = document.getElementById('btn');
-document.addEventListener('DOMContentLoaded', () => {
-    button.addEventListener('click', userData)
-});
-
     // Create Human Object
 
 const human = new Human;
 
     // Get human data from form 
 
-const userData = () => 
+const userData = () => {
     human.species = document.getElementById('name').value;
     human.diet = document.getElementById('diet').value;
     human.weight = document.getElementById('weight').value;
@@ -118,6 +111,8 @@ const userData = () =>
     human.when = document.getElementById('year').value;
     human.fact = '';
     human.image = '';
+    return human
+}
 
 
 console.log(typeof human)
@@ -135,12 +130,9 @@ function shuffle(myArray) {
     return myArray;
 };
 
-myArray.splice(4, 0, this.human); //Put value human in the middle of the array (https://stackoverflow.com/questions/586182/how-to-insert-an-item-into-an-array-at-a-specific-index-javascript)
+myArray.splice(4, 0, human); //Put value human in the middle of the array (https://stackoverflow.com/questions/586182/how-to-insert-an-item-into-an-array-at-a-specific-index-javascript)
 
 console.log(myArray)
-
-
-
 
 //Dino method 1 (weight)
 
@@ -173,17 +165,65 @@ Dino.prototype.methodHeight = function(human) {
     `You and a ${this.species} eat pretty much the same things. Probably you cook better than them!` 
     : 
     `Welp. You two are quite different when it comes to diet.`;
+
+//Random comparison facts 
+
+function factsRandom(){
+
+}
     
+// Generate Tiles
 
+const getHumanTile = () => {
+    return `<div class="grid-item">
+      <h3>Human</h3>
+      <img src="images/human.png">
+      <h4>${human.species}</h4> 
+      </div>`;
+  };
 
+const getDinoTile = (dino) => {
+    return `<div class="grid-item">
+    <h3>${dino.species}</h3>
+    <img src="images/${dino.species.toLowerCase()}.png">
+    <h4>${dino.fact}</h4> 
+    </div>`
+}
 
-    // Generate Tiles for each Dino in Array
+//Get a HTML string back with the dino and human tiles and placed it on .grid
 
+function fillGrid(){
+    let str = '';
+    for (let i = 0; i < myArray.length; i++) {
+        if (i == 4) {
+            str = str + getHumanTile();
+        } else {
+            str = str + getDinoTile(myArray[i]);
+        }   
+    };
+    return str;
+}
 
-  
-        // Add tiles to DOM
+// Remove form from screen
 
-    // Remove form from screen
+const form =  document.getElementById('dino-compare');
 
+function removeForm() {
+    form.style.display = 'none';
+}
 
 // On button click, prepare and display infographic
+    const button = document.getElementById('btn');
+    
+    button.addEventListener('click', onClick)
+
+    function onClick(){
+        userData();
+        tileDOM();
+        removeForm();
+    }
+
+    function tileDOM() {
+        let grid = document.getElementById('grid');
+        grid.innerHTML = fillGrid();
+    }
