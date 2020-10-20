@@ -106,11 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create Human Object
 
-    let human = new Human;
+const human = new Human;
 
-    // Use IIFE to get human data from form 
+    // Get human data from form 
 
-const userData = () => {
+const userData = () => 
     human.species = document.getElementById('name').value;
     human.diet = document.getElementById('diet').value;
     human.weight = document.getElementById('weight').value;
@@ -118,16 +118,33 @@ const userData = () => {
     human.when = document.getElementById('year').value;
     human.fact = '';
     human.image = '';
-};
 
 
 console.log(typeof human)
 console.log(userData())
 
+//Generate dino array and shuffle function. Stackoverflow shuffle method (https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array)
+
+const myArray = [dino1, dino2, dino3, dino4, dino5, dino6, dino7, dino8];
+
+function shuffle(myArray) {
+    for (let i = myArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [myArray[i], myArray[j]] = [myArray[j], myArray[i]];
+    }
+    return myArray;
+};
+
+myArray.splice(4, 0, this.human); //Put value human in the middle of the array (https://stackoverflow.com/questions/586182/how-to-insert-an-item-into-an-array-at-a-specific-index-javascript)
+
+console.log(myArray)
+
+
+
 
 //Dino method 1 (weight)
 
-  Dino.prototype.methodWeight = function() {
+  Dino.prototype.methodWeight = function(human) {
     if (this.weight > human.weight){
         return `${this.species} is ${this.weight - human.weight}kg. heavier than you!`
     } else if (this.weight == human.weight){
@@ -139,7 +156,7 @@ console.log(userData())
 
 //Dino method 2 (height)
 
-Dino.prototype.methodHeight = function() {
+Dino.prototype.methodHeight = function(human) {
     if (this.height > human.height){
         return `${this.species} is ${this.height - human.height}cm. taller than you!`
     } else if (this.height == human.height){
@@ -151,13 +168,13 @@ Dino.prototype.methodHeight = function() {
 
 //Dino method 3 (diet)
   
-  Dino.prototype.methodDiet = function() {
-    if (this.diet === human.diet) {
-      return `You and a ${this.species} eat pretty much the same things. Probably you cook better than them!`;
-    } else {
-      return `Welp. You two are quite different when it comes to diet.`;
-    }
-  };
+  Dino.prototype.methodDiet = (human) => 
+    (this.diet == human.diet) ? 
+    `You and a ${this.species} eat pretty much the same things. Probably you cook better than them!` 
+    : 
+    `Welp. You two are quite different when it comes to diet.`;
+    
+
 
 
     // Generate Tiles for each Dino in Array
