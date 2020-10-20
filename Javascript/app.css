@@ -37,7 +37,7 @@ p {
 
 /* Grid Styles */
 #grid {
-    background: #fff url(images/tracks.png) no-repeat;
+    background:rgb(111, 208, 224) url(images/tracks.png) no-repeat;
     background-size: cover;
     display: flex;
     margin: 2em;
@@ -164,6 +164,22 @@ select {
 }
 
 #btn:hover {
+    background: #777;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10%;
+}
+
+#newBtn {
+    display: inline-block;
+    background: #9fc376f9;
+    padding: 0.8em;
+    margin: 1.2em auto;
+    transition: ease 0.3s all;
+    border-radius: 10%;
+}
+
+#newBtn:hover {
     background: #777;
     color: #fff;
     cursor: pointer;
