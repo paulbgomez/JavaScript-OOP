@@ -154,7 +154,7 @@ Dino.prototype.methodHeight = function(human) {
     (this.diet == human.diet) ? 
     `You and a ${this.species} eat pretty much the same things. Probably you cook better than them!` 
     : 
-    `Welp. You two are quite different when it comes to diet.`;
+    `You two are quite different when it comes to diet.`;
 
 //Random number that is not repeated from a dino array. Human and pigeon are not included. https://stackoverflow.com/questions/18806210/generating-non-repeating-random-numbers-in-js/18806417
 function* randomNumber(myArray) {
@@ -188,7 +188,8 @@ const getDinoTileDiet = (dino) => {
     return `<div class="grid-item">
     <h3>${dino.species}</h3>
     <img src="images/${dino.species.toLowerCase()}.png">
-    <h4>${dino.methodDiet(human)}</h4>
+    <h4>The ${dino.species} was ${dino.diet}.</h4>
+    <h4 id='compare-fact'>${dino.methodDiet(human)}</h4>
     </div>`
 }
 
@@ -208,6 +209,15 @@ const getDinoTileHeight = (dino) => {
     </div>`
 }
 
+const getDinoTileWhen = (dino) => {
+    return `<div class="grid-item">
+    <h3>${dino.species}</h3>
+    <img src="images/${dino.species.toLowerCase()}.png">
+    <h4>The ${dino.species} lived in the ${dino.when} period.</h4>
+    </div>`
+}
+
+
 //Generate a new compare button
 const getButton = () => {
     return `<div id='newBtn'>Compare Me Again!</div>`
@@ -218,6 +228,7 @@ function fillGrid(){
     let random1 =ranNums.next().value; //Generate a random dino from the array that is not pigeon or human
     let random2 =ranNums.next().value;
     let random3 =ranNums.next().value;
+    let random4 =ranNums.next().value;
     let str = '';
     for (let i = 0; i < myArray.length; i++) {
         if (i == 4) {
@@ -228,6 +239,8 @@ function fillGrid(){
             str = str + getDinoTileWeight(random2);
         } else if (random3 == myArray[i]) {
             str = str + getDinoTileHeight(random3); 
+        } else if (random4 == myArray[i]) {
+            str = str + getDinoTileWhen(random4);    
         } else {
             str = str + getDinoTile(myArray[i]);
         }   
