@@ -14,11 +14,6 @@
         this.fact = fact;
     };
 
-    function Human(species, weight, height, diet, when, fact, image) {
-        Animal.call(this, weight, height, diet, image)
-        this.when = when;
-        this.fact = fact;
-    };
  
     // Create Dino Objects
     const dino1 = new Dino(
@@ -95,18 +90,15 @@
     );
     // Create Human Object
 
-const human = new Human;
+const human = new Animal;
 
     // Get human data from form 
 
-const userData = () => {
+const getUserData = () => {
     human.species = document.getElementById('name').value;
     human.diet = document.getElementById('diet').value;
     human.weight = document.getElementById('weight').value;
     human.height = document.getElementById('height').value;
-    human.when = document.getElementById('year').value;
-    human.fact = '';
-    human.image = '';
     return human
 }
 
@@ -114,15 +106,20 @@ const userData = () => {
 
 const myArray = [dino1, dino2, dino3, dino4, dino5, dino6, dino7, dino8];
 
-function shuffle(myArray) {
+function createCustomArray() {
+    if (myArray.includes(human)) {
+        myArray.splice(4,1);
+    }
     for (let i = myArray.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [myArray[i], myArray[j]] = [myArray[j], myArray[i]];
     }
+    myArray.splice(4,0,human);
     return myArray;
 };
 
-myArray.splice(4, 0, human); //Put value human in the middle of the array (https://stackoverflow.com/questions/586182/how-to-insert-an-item-into-an-array-at-a-specific-index-javascript)
+
+ //Put value human in the middle of the array (https://stackoverflow.com/questions/586182/how-to-insert-an-item-into-an-array-at-a-specific-index-javascript)
 
 //Dino method 1 (weight)
 
@@ -180,7 +177,7 @@ const getDinoTile = (dino) => {
     return `<div class="grid-item">
     <h3>${dino.species}</h3>
     <img src="images/${dino.species.toLowerCase()}.png">
-    <h4>${dino.fact}</h4>
+    <h4 id='dino-fact'>${dino.fact}</h4>
     </div>`
 }
 
@@ -220,18 +217,18 @@ const getDinoTileWhen = (dino) => {
 
 //Generate a new compare button
 const getButton = () => {
-    return `<div id='newBtn'>Compare Me Again!</div>`
+    return `<div id='newBtn' onclick="refreshBoard()">Compare Me Again!</div>`
 }
 
 //Get a HTML string back with the dino and human tiles and placed it on .grid
 function fillGrid(){
-    let random1 =ranNums.next().value; //Generate a random dino from the array that is not pigeon or human
-    let random2 =ranNums.next().value;
-    let random3 =ranNums.next().value;
-    let random4 =ranNums.next().value;
+    const random1 =ranNums.next().value; //Generate a random dino from the array that is not pigeon or human
+    const random2 =ranNums.next().value;
+    const random3 =ranNums.next().value;
+    const random4 =ranNums.next().value;
     let str = '';
     for (let i = 0; i < myArray.length; i++) {
-        if (i == 4) {
+        if (myArray[i] == human) {
             str = str + getHumanTile();
         } else if (random1 == myArray[i]) {
             str = str + getDinoTileDiet(random1);
@@ -260,10 +257,20 @@ function removeForm() {
     const button = document.getElementById('btn');
     button.addEventListener('click', onClick);
 
-    function onClick(){
-        userData();
+    function refreshBoard() {
+        createCustomArray();
         tileDOM();
+    }
+
+    function onClick(){
+        getUserData();
+        if (human.species == '' || human.weight == '' || human.height == ''){
+            alert ('Please check all fields are complete')
+        }
+        else {
         removeForm();
+        refreshBoard();
+        };
     }
 
     function tileDOM() {
