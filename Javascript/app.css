@@ -41,7 +41,7 @@ p {
     background: linear-gradient(0deg,rgb(111, 208, 224) 0%, rgb(171, 228, 167) 100%);
     background-size: cover;
     border-radius: 20px;
-    opacity: 0.9;
+    opacity: 0.8;
     display: flex;
     margin: 2em;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -58,7 +58,7 @@ p {
     background: #009687f5;
     transition: 450ms opacity;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
     border-radius: 20px;
 }
 
@@ -66,7 +66,7 @@ p {
     background: #dc7657f5;
     transition: 450ms opacity;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
     border-radius: 20px;
 }
 
@@ -74,7 +74,7 @@ p {
     background: #4bb3c1fa;
     transition: 450ms opacity;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
     border-radius: 20px;
 }
 
@@ -82,7 +82,7 @@ p {
     background: #fac069f9;
     transition: 450ms opacity;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
     border-radius: 20px;
 }
 
@@ -95,7 +95,7 @@ p {
     background: #b94169fa;
     transition: 450ms opacity;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
     border-radius: 20px;
 }
 
@@ -103,7 +103,7 @@ p {
     background: #7f62b3fa;
     transition: 450ms opacity;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
     border-radius: 20px;
 }
 
@@ -111,7 +111,7 @@ p {
     background: #9fc376f9;
     transition: 450ms opacity;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
     border-radius: 20px;
 }
 
@@ -119,7 +119,7 @@ p {
     background: #677bcbfa;
     transition: 450ms opacity;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
     border-radius: 20px;
 }
 
@@ -133,7 +133,8 @@ p {
 .grid-item:nth-child(9):hover{
     opacity: 1;
     color: white;
-    transform: scale(1.05);
+    transform: scale(1.1);
+    z-index: 1;
 }
 
 
