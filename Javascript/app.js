@@ -16,14 +16,14 @@ function Animal (species, weight, height, diet, image){
     this.height=height;
     this.diet=diet;
     this.image=image
-    };
+    }
 
 function Dino (species, weight, height, diet, where, when, fact, image) {
     Animal.call(this, species, weight, height, diet, image)
     this.where = where;
     this.when = when;
     this.fact = fact;
-    };
+    }
 
 // Create Dino Objects 
 const dino1 = new Dino(
@@ -112,7 +112,7 @@ function createCustomArray() {
     }
     myArray.splice(4,0,human);//Put value human in the middle of the array
     return myArray;
-};
+}
 
 //Random number that is not repeated from a dino array. Human and pigeon are not included in this array. https://stackoverflow.com/questions/18806210/generating-non-repeating-random-numbers-in-js/18806417
 function* randomNumber(arr) {
@@ -129,7 +129,7 @@ const getUserData = () => {
     human.weight = document.getElementById('weight').value;
     human.height = document.getElementById('height').value;
     return human
-}
+};
 
 //Dino method 1 (weight)
   Dino.prototype.methodWeight = function(human) {
@@ -175,7 +175,7 @@ const getDinoTile = (dino) => {
     <img src="images/${dino.species.toLowerCase()}.png">
     <h4 id='dino-fact'>${dino.fact}</h4>
     </div>`
-}
+};
 
 const getDinoTileDiet = (dino) => {
     return `<div class="grid-item">
@@ -184,7 +184,7 @@ const getDinoTileDiet = (dino) => {
     <h4>The ${dino.species} was ${dino.diet}.</h4>
     <h4 id='compare-fact'>${dino.methodDiet(human)}</h4>
     </div>`
-}
+};
 
 const getDinoTileWeight = (dino) => {
     return `<div class="grid-item">
@@ -192,7 +192,7 @@ const getDinoTileWeight = (dino) => {
     <img src="images/${dino.species.toLowerCase()}.png">
     <h4>${dino.methodWeight(human)}</h4>
     </div>`
-}
+};
 
 const getDinoTileHeight = (dino) => {
     return `<div class="grid-item">
@@ -200,7 +200,7 @@ const getDinoTileHeight = (dino) => {
     <img src="images/${dino.species.toLowerCase()}.png">
     <h4>${dino.methodHeight(human)}</h4>
     </div>`
-}
+};
 
 const getDinoTileWhen = (dino) => {
     return `<div class="grid-item">
@@ -208,16 +208,16 @@ const getDinoTileWhen = (dino) => {
     <img src="images/${dino.species.toLowerCase()}.png">
     <h4>The ${dino.species} lived in the ${dino.when} period.</h4>
     </div>`
-}
+};
 
 //Get a HTML string back with the dino and human tiles and placed it on .grid
 function fillGrid(){
+    let str = '';                        
+    for (let i = 0; i < myArray.length; i++) {
     const random1 =ranNums.next().value; //Generate a random dino from the array that is not pigeon or human
     const random2 =ranNums.next().value;
     const random3 =ranNums.next().value;
-    const random4 =ranNums.next().value;
-    let str = '';                        
-    for (let i = 0; i < myArray.length; i++) { //loop that will iterate through my array and paint the different comparative methods in my HTML
+    const random4 =ranNums.next().value; //loop that will iterate through my array and paint the different comparative methods in my HTML
         if (myArray[i] == human) {
             str = str + getHumanTile();
         } else if (random1 == myArray[i]) {
@@ -247,20 +247,20 @@ function removeForm() {
 }
 
 // On button click, prepare and display infographic
-    button.addEventListener('click', onClick);
+button.addEventListener('click', onClick);
 
-    function refreshBoard() {
-        createCustomArray();
-        tileDOM();
-    }
+function refreshBoard() {
+    createCustomArray();
+    tileDOM(human);
+}
 
-    function onClick(){
-        getUserData();
-        if (human.species == '' || human.weight == '' || human.height == ''){
-            alert ('Please check all fields are complete')
-        }
-        else {
-        removeForm();
-        refreshBoard();
-        };
+function onClick(){
+    getUserData();
+    if (human.species == '' || human.weight == '' || human.height == ''){
+        alert ('Please check all fields are complete')
     }
+    else {
+    removeForm();
+    refreshBoard();
+    };
+}
