@@ -28,6 +28,24 @@ function Dino(species, weight, height, diet, where, when, fact, image) {
   this.when = when;
   this.fact = fact;
 }
+// all the methods of the Animal prototype (if there is any) will be inherited for by Dino class
+Dino.prototype = Object.create(Animal.prototype);
+
+/* Get dinos fetching the json
+async function getDinoObjectsFromJSON() {
+  const dinoArray = [];
+  const jsonResponse = await fetch('./dino.json');
+  const dinoDataFromJson = await jsonResponse.json();
+  dinoDataFromJson.Dinos.forEach((dino) => {
+    dinoArray.push(new Dino(
+      dino.species, dino.weight, dino.height, dino.diet, dino.where, dino.when, dino.fact,
+    ));
+  });
+  return dinoArray;
+}
+
+const dinos = getDinoObjectsFromJSON();
+*/
 
 // Create Dino Objects
 const dino1 = new Dino(
@@ -102,6 +120,7 @@ const dino8 = new Dino(
   'Holocene',
   'All birds are living dinosaurs.',
 );
+
 // Dinosaurs are group in an array
 const myArray = [dino1, dino2, dino3, dino4, dino5, dino6, dino7, dino8];
 
