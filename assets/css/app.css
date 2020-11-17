@@ -211,7 +211,7 @@ select {
     border-radius: 20px;
 }
 
-#newBtn {
+#nuevo-btn {
     display: inline-block;
     background: #9fc376f9;
     padding: 0.8em;
@@ -220,7 +220,22 @@ select {
     border-radius: 20px;
 }
 
-#newBtn:hover {
+#nuevo-btn:hover {
+    background: #777;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
+}
+#atras-btn {
+    display: inline-block;
+    background: #677bcbfa;
+    padding: 0.8em;
+    margin: 1.2em auto;
+    transition: ease 0.3s all;
+    border-radius: 20px;
+}
+
+#atras-btn:hover {
     background: #777;
     color: #fff;
     cursor: pointer;
