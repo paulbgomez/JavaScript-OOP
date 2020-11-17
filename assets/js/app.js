@@ -2,7 +2,7 @@
    window.onload = function(){
 
     // Variables
-    const url = 'https://raw.githubusercontent.com/paulbgomez/JavaScript-OOP/main/dino.json';
+    const url = 'https://raw.githubusercontent.com/paulbgomez/JavaScript-OOP/main/assets/json/dino.json';
     let dataJSON; // Dino[];
     let dataForm = {};
     const form = document.getElementById('dino-compare');
